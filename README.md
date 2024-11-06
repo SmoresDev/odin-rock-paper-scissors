@@ -1,0 +1,1 @@
+The first javascript project in the Odin Project course. Played entirely in console. Rules are simple, pick one of the three choices and hope your choice beats the computer. Rock beats scissors, scissors beats paper, paper beats rock.
