@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+.rps-container {
+    margin-top: 64px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.rsps-images{
+    max-width: 250px;
+}
+
+.rps-score {
+    margin-top: 64px;
+    display: flex;
+    justify-content: space-around;
+}
+

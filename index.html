@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
-<body onload="playGame()">
+<body>
     <h1>Rock Paper Scissors!</h1>
     <p><em>How To Play:</em><br>
     Each round, pick one of the three options.<br>
@@ -18,7 +19,17 @@
     Paper trumps Rocks, but loses to Scissors<br>
     Scissors trumps Paper, but loses to Rock<br>
     </p>
-    <h2>Press F12, then click Console to play!</h2>
+    <div class="container">
+        <div id="rps-container">
+            <img class="rsps-images" id="rock" src="./images/rock.svg">
+            <img class="rsps-images" id="paper" src="./images/paper.svg">
+            <img class="rsps-images" id="scissors" src="./images/scissors.svg">
+        </div>
+        <div class="rps-score">
+            <h2 class="human-score">Human Score: </h2><h2 id="human-score">0</h2>
+            <h2 class="computer-score">Computer Score: </h2><h2 id="computer-score">0</h2>
+        </div>
+    </div>
 </body>
 <script src="./script.js"></script>
 </html>

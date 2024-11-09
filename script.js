@@ -1,47 +1,72 @@
+let rockImg = document.getElementById("rock");
+let paperImg = document.getElementById("paper");
+let scissorsImg = document.getElementById("scissors");
+let humanScore = document.getElementById("human-score");
+let computerScore = document.getElementById("computer-score");
+let rpsGameContainer = document.getElementById("rps-container");
+
+var rpsGame = rpsGameContainer.addEventListener('click', clickGame);
+
+function clickGame(target) {
+    let winner = playRound(target);
+    if (winner == 'human') {
+        let humanPoints = Number(humanScore.textContent);
+        humanPoints += 1;
+        humanScore.innerHTML = humanPoints
+    } else if (winner == 'computer') {
+        let computerPoints = Number(computerScore.textContent);
+        computerPoints += 1;
+        computerScore.innerHTML = computerPoints
+    }
+    updateColors()
+}
+
+
 function getComputerChoice () {
     let choice = Math.floor(Math.random() * 3);
     if (choice == 0) {
-        console.log("Computer chose: Scissors");
+        alert("Computer chose: Scissors");
     } else if (choice == 1) {
-        console.log("Computer chose: Rock");
+        alert("Computer chose: Rock");
     } else if (choice == 2) {
-        console.log("Computer chose: Paper");
+        alert("Computer chose: Paper");
     }
     return choice;
 }
 
-function getHumanChoice () {
-    let playerChoice = prompt("[1] Rock | [2] Paper | [3] Scissors?")
-    switch (parseInt(playerChoice)) {
-        case 1:
+function getHumanChoice(target) {
+    let playerChoice = target.target.id
+    switch (playerChoice) {
+        case 'rock':
             console.log('You chose Rock')
+            playerChoice = 1;
             break;
-        case 2:
+        case 'paper':
             console.log('You chose Paper')
+            playerChoice = 2;
             break;
-        case 3:
+        case 'scissors':
             console.log('You chose Scissors')
+            playerChoice =3
             break;
     }
     return playerChoice
 }
 
 
-function playRound () {
+function playRound (target) {
     let winner = ''
-    while (winner == '') {
-        let humanChoice = getHumanChoice();
-        let computerChoice = getComputerChoice();
-        if ((humanChoice - computerChoice) == 1) {
-            console.log("Congrats, you win!")
-            return winner = 'human';
-        } else if ((humanChoice - computerChoice) < 0 || (humanChoice - computerChoice) == 2) {
-            console.log("Bummer dude, Computer won that time.")
-            return winner = 'computer'
-        } else {
-            console.log('Tie! Go again!')
-        }
-    }
+    let humanChoice = getHumanChoice(target);
+    let computerChoice = getComputerChoice();
+    if ((humanChoice - computerChoice) == 1) {
+        alert("Congrats, you win!")
+        return winner = 'human';
+    } else if ((humanChoice - computerChoice) < 0 || (humanChoice - computerChoice) == 2) {
+        alert("Bummer dude, Computer won that time.")
+        return winner = 'computer'
+    } else {
+        alert('Tie! Go again!')
+    } return winner
 }
 
 function playGame () {  
@@ -58,3 +83,18 @@ function playGame () {
     }
     console.log(`Your final score: ${humanScore}    Computer Score: ${computerScore}`)
 } 
+
+function updateColors () {
+    let computerPoints = Number(computerScore.textContent);
+    let humanPoints = Number(humanScore.textContent);
+    if (humanPoints > computerPoints) {
+        humanScore.style.color = "green";
+        computerScore.style.color = "red";
+    } else if (humanPoints < computerPoints) {
+        humanScore.style.color = "red";
+        computerScore.style.color = "green";
+    } else {
+        humanScore.style.color = "black";
+        computerScore.style.color = "black";
+    }
+}
